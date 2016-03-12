@@ -1,0 +1,81 @@
+// /////////////////////////////////////////////////////////////////////////////////////////////
+
+//   $.ajax({
+//     dataType: 'json',
+//     url: '/zombies.json',
+//     success: function(data) {
+//       console.log(JSON.stringify(data));
+//       setTimeout(function () {
+//         for (i = 0; i < data.length; i++) {
+//           var marker = new google.maps.Marker({
+//           position: {lat: data[i].geometry.coordinates[1], lng: data[i].geometry.coordinates[0]},
+//           title: data[i].properties.name,
+//           map: map,
+//           });
+//         }
+//       }, 3000);
+//     }
+//   });
+
+// /////////////////////////////////////////////////////////////////////////////////////////////
+
+//   setTimeout(ajax_call, 3000);
+
+//   function ajax_call() {
+//     $.ajax({
+//       dataType: 'json',
+//       url: '/zombies.json',
+//       success: function(data) {
+//         for (i = 0; i < data.length; i++) {
+//           var marker = new google.maps.Marker({
+//           position: {lat: data[i].geometry.coordinates[1], lng: data[i].geometry.coordinates[0]},
+//           title: data[i].properties.name,
+//           map: map,
+//           });
+//         }
+//       }
+//     });
+//   }
+
+// /////////////////////////////////////////////////////////////////////////////////////////////
+
+//   $.ajax({
+//     dataType: 'json',
+//     url: '/zombies.json',
+//     success: function(data) {
+//       console.log(JSON.stringify(data));
+//       addMarkers(data);
+//     }
+//   });
+
+//   function addMarkers(data) {
+//     for (i = 0; i < data.length; i++) {
+//       var marker = new google.maps.Marker({
+//       position: {lat: data[i].geometry.coordinates[1], lng: data[i].geometry.coordinates[0]},
+//       title: data[i].properties.name,
+//       map: map,
+//       });
+//     }
+//   }
+
+// /////////////////////////////////////////////////////////////////////////////////////////////
+
+//   $.ajax({
+//     dataType: 'json',
+//     url: '/zombies.json',
+//     success: function(data) {
+//       for (i = 0; data.length; i++) {
+//         addMarkers(data);
+//       }
+//     }
+//   });
+
+//   function addMarkers(data) {
+//     var marker = new google.maps.Marker({
+//     position: {lat: data[i].geometry.coordinates[1], lng: data[i].geometry.coordinates[0]},
+//     title: data[i].properties.name,
+//     map: map,
+//     });
+//   }
+
+// }
