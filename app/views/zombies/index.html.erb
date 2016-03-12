@@ -1,0 +1,138 @@
+<h1>Listing Zombies</h1>
+ 
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Graveyard</th>
+    <th>Longitude</th>
+    <th>Latitude</th>
+  </tr>
+ 
+  <% @zombies.each do |zombie| %>
+    <tr>
+      <td><%= zombie.name %></td>
+      <td><%= zombie.graveyard %></td>
+      <td><%= zombie.longitude %></td>
+      <td><%= zombie.latitude %></td>
+    </tr>
+  <% end %>
+</table>
+
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+
+<script>
+function initialize() {
+  var mapProp = {
+  center:new google.maps.LatLng(30.2848, -97.7213),
+  zoom: 12,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+  var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+  $.ajax({
+    dataType: 'json',
+    url: '/zombies.json',
+    success: function(data) {
+      console.log(JSON.stringify(data));
+
+      for (i = 0; i < data.length; i++) {
+        var marker = new google.maps.Marker({
+        position: {lat: data[i].geometry.coordinates[1], lng: data[i].geometry.coordinates[0]},
+        title: data[i].properties.name,
+        map: map,
+        });
+      }
+    }
+  });
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+  $.ajax({
+    dataType: 'json',
+    url: '/zombies.json',
+    success: function(data) {
+      console.log(JSON.stringify(data));
+      setTimeout(function () {
+        for (i = 0; i < data.length; i++) {
+          var marker = new google.maps.Marker({
+          position: {lat: data[i].geometry.coordinates[1], lng: data[i].geometry.coordinates[0]},
+          title: data[i].properties.name,
+          map: map,
+          });
+        }
+      }, 3000);
+    }
+  });
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+  setTimeout(ajax_call, 3000);
+
+  function ajax_call() {
+    $.ajax({
+      dataType: 'json',
+      url: '/zombies.json',
+      success: function(data) {
+        for (i = 0; i < data.length; i++) {
+          var marker = new google.maps.Marker({
+          position: {lat: data[i].geometry.coordinates[1], lng: data[i].geometry.coordinates[0]},
+          title: data[i].properties.name,
+          map: map,
+          });
+        }
+      }
+    });
+  }
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+  $.ajax({
+    dataType: 'json',
+    url: '/zombies.json',
+    success: function(data) {
+      console.log(JSON.stringify(data));
+      addMarkers(data);
+    }
+  });
+
+  function addMarkers(data) {
+    for (i = 0; i < data.length; i++) {
+      var marker = new google.maps.Marker({
+      position: {lat: data[i].geometry.coordinates[1], lng: data[i].geometry.coordinates[0]},
+      title: data[i].properties.name,
+      map: map,
+      });
+    }
+  }
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+  $.ajax({
+    dataType: 'json',
+    url: '/zombies.json',
+    success: function(data) {
+      for (i = 0; data.length; i++) {
+        addMarkers(data);
+      }
+    }
+  });
+
+  function addMarkers(data) {
+    var marker = new google.maps.Marker({
+    position: {lat: data[i].geometry.coordinates[1], lng: data[i].geometry.coordinates[0]},
+    title: data[i].properties.name,
+    map: map,
+    });
+  }
+
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+</script>
+
+<div id="googleMap" style="width:1000px;height:500px;"></div>
