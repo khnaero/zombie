@@ -1,0 +1,25 @@
+<%= form_for @zombie do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :graveyard %><br>
+    <%= f.text_field :graveyard %>
+  </p>
+
+  <p>
+    <%= f.label :longitude %><br>
+    <%= f.text_field :longitude %>
+  </p>
+  
+   <p>
+    <%= f.label :latitude %><br>
+    <%= f.text_field :latitude %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

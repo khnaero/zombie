@@ -32,22 +32,38 @@ class ZombiesController < ApplicationController
   end
 
   def new
+    @zombie = Zombie.new
   end
 
   def edit
+    @zombie = Zombie.find(params[:id])
   end
 
   def create
   	@zombie = Zombie.new(zombie_params)
 
-  	@zombie.save
-  	redirect_to @zombie
+  	if @zombie.save
+  	  redirect_to @zombie
+    else
+      render 'new'
+    end
   end
 
   def update
+    @zombie = Zombie.find(params[:id])
+
+    if @zombie.update(zombie_params)
+      redirect_to zombie_path
+    else
+      render 'edit'
+    end
   end
 
   def destroy
+    @zombie = Zombie.find(params[:id])
+    @zombie.destroy
+
+    redirect_to zombies_path
   end
 
 private
