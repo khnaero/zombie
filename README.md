@@ -1,1 +1,1 @@
-App to learn database
+Quick app designed to help me understand how to manipulate coordinate data from database using the controller. Data needs to be transformed into GeoJSON objects. An AJAX call is used to retrieve the data.
